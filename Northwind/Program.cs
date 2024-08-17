@@ -1,74 +1,197 @@
-﻿namespace Northwind
+﻿using Northwind.Entities;
+using static Northwind.DataLists;
+namespace Northwind
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
+
             #region Easy
-            // Retrieve all products with a unit price greater than $50.
-               
-            // List the names of all customers from London.
-               
-            // Find all orders shipped by "Speedy Express".
-               
-            // Get the total number of orders placed by customer "ALFKI".
-               
-            // List all employees who are managers.
-               
-            // Find products that are discontinued.
-               
+            // 1- Retrieve all products with a unit price greater than $50.
+
+            #region 1-Retrieve all products with a unit price greater than $50
+            //// 1-Using Query Operator
+
+            //var products = Products
+            //    .Where(p => p.UnitPrice > 50);
+            //// 2- Using Query Expression 
+
+            //var products = from p in Products
+            //           where p.UnitPrice > 50
+            //           select p;
+
+            //foreach(var product in products)
+            //{
+            //    Console.WriteLine(product.ProductName);
+            //} 
+            #endregion
+
+            //2- List the names of all customers from London.
+
+            #region 2- List the names of all customers from London.
+            //1- Using Query Operator 
+            //var customers = Customers.Where(c => c.City.Contains("London"))
+            //    .Select(c=>c.ContactName);
+
+            //2- Using Query Expression 
+            //var customers = from c in Customers
+            //                where c.City == "London"
+            //                select c.ContactName;
+            //foreach (var customer in customers)
+            //{
+            //   Console.WriteLine($"Customer Name : { customer}");
+            //} 
+            #endregion
+
+            //3- Find all orders shipped by "Speedy Express".
+
+            #region 3- Find all orders shipped by "Speedy Express
+            // 1-Using Query Operator
+
+            //var orders = Orders.Join(Shippers,
+            //    o => o.ShipVia,
+            //    s => s.ShipperID,
+            //    (o, s) => new { Order = o, Shipper = s })
+            //    .Where(s => s.Shipper.CompanyName.Contains("Speedy Express"));
+
+            //var orders = Orders.Join(Shippers,
+            //                    o => o.ShipVia,
+            //                    s => s.ShipperID,
+            //                    (o, s) => new { Order = o, Shipper = s })
+            //                    .Where(s => s.Shipper.ShipperID==1);
+
+            // 2- Using Query Expression
+
+            //var orders = from s in Shippers
+            //             join o in Orders
+            //             on s.ShipperID equals o.ShipVia
+            //             where s.ShipperID == 1
+            //             select o;
+
+            //foreach (var order in orders)
+            //{
+            //    Console.WriteLine(order.ToString());
+            //}
+
+            #endregion
+
+            //4- Get the total number of orders placed by customer "BLAUS".
+            #region 4- Get the total number of orders placed by customer "BLAUS"
+
+            //1- Using Query Operator
+
+            //var totalOrdersNum = 
+            //    Orders.Join(Customers,
+            //    o => o.CustomerID,
+            //    c => c.CustomerID,
+            //    (o, c) => new { Order = o, Customer = c })
+            //    .Where(c => c.Customer.CustomerID.Contains("BLAUS"))
+            //    .Count();
+
+            // 2- Using Query Expression
+
+            //var totalOrdersNum = (from o in Orders
+            //                      join c in Customers
+            //                      on o.CustomerID equals c.CustomerID
+            //                      where c.CustomerID == "BLAUS"
+            //                      select o).Count();
+            //Console.WriteLine(totalOrdersNum);
+            #endregion
+
+            //5- List all employees who are managers.
+            #region 5- List all employees who are managers
+
+            //1- Using Query Operator
+
+            //var employees = Employees
+            //    .Where(employee=>Employees.Any(e=>e.ReportsTo==employee.EmployeeID))
+            //    .Select(e=>new {Name=$"{e.FirstName} {e.LastName}" });
+
+            // 2- Using Query Expression
+            //var employees = from emp in Employees
+            //                where Employees.Any(e => e.ReportsTo == emp.EmployeeID)
+            //                select new { Name = $"{emp.FirstName} {emp.LastName}" };
+
+            //foreach (var employee in employees)
+            //{
+            //    Console.WriteLine(employee);
+            //}
+
+            #endregion
+
+            //6-Find products that are discontinued.
+
+            #region 6-Find products that are discontinued.
+            //1- Using Query Operator
+
+            //var products = Products.Where(p => p.Discontinued)
+            //    .Select(p=>p.ProductName);
+
+            // 2- Using Query Expression
+
+            //var products = from p in Products
+            //               where p.Discontinued
+            //               select p.ProductName;
+
+            //foreach (var product in products)
+            //{
+            //    Console.WriteLine($"Product Name : {product}");
+            //} 
+            #endregion
+
             // Retrieve the names and phone numbers of all suppliers.
-               
+
             // Get all orders placed in the year 1996.
-               
+
             // Find all customers in the "USA".
-               
+
             // List products that belong to category "Beverages".
-               
+
             // Retrieve orders with a freight cost less than $10.
-               
+
             // Get the names and titles of all employees.
-               
+
             // Find suppliers from "Germany".
-               
+
             // List all products with quantities between 10 and 50.
-               
+
             // Retrieve orders that were shipped but not yet delivered.
-               
+
             // Get the total number of products in each category.
-               
+
             // List all orders placed by employee with ID 5.
-               
+
             // Find the name of the supplier with the highest ID.
-               
+
             // Retrieve products that have "Box" in their quantity per unit description.
-               
+
             // List all customers from "Germany".
-               
+
             // Find all products that have never been ordered.
-               
+
             // Get all orders with a freight cost greater than $50.
-               
+
             // Retrieve names of all categories.
-               
+
             // List all orders where the ship city is "Seattle".
-               
+
             // Find the employees who have "Sales" in their title.
-               
+
             // Retrieve orders that were placed in the month of June.
-               
+
             // Get the names and phone numbers of suppliers from "Italy".
-               
+
             // List all products with unit prices less than $20.
-               
+
             // Find orders that were shipped in 1997.
-               
+
             // Retrieve the names of all customers who have placed more than 5 orders.
-               
+
             // List products with no quantity on order.
-               
+
             // Get all categories with more than 10 products.
-               
+
             // Find the customer with the most recent order.
 
             // Retrieve employees who work in "Sales".
