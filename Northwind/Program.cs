@@ -331,9 +331,41 @@ namespace Northwind
             #endregion Easy
 
             #region Medium
-            // List all products whose unit price is higher than the average unit price of all products.
+            //1- List all products whose unit price is higher than the average unit price of all products.
+            #region 1-List all products whose unit price is higher than the average unit price of all products.
 
-            // Retrieve the top 5 customers who have placed the highest number of orders.
+            // 1-Using Query Operator
+            //var avg = Products.Average(p => p.UnitPrice);
+            //var products=Products.Where(p=>p.UnitPrice > avg);
+
+            // 1-Using Query Expression
+            //var products = from p in Products
+            //               where p.UnitPrice > Products.Average(p=>p.UnitPrice)
+            //               select p;
+            //foreach(var product in products)
+            //{
+            //    Console.WriteLine(product);
+            //} 
+            #endregion
+
+            //2-Retrieve the top 5 customers who have placed the highest number of orders.
+            #region 2-Retrieve the top 5 customers who have placed the highest number of orders.
+            // 1- Using Query Operator
+            //var topCustomers = Orders
+            //  .GroupBy(o => o.CustomerID)
+            //  .OrderByDescending(g => g.Count())
+            //  .Select(g => new
+            //  {
+            // CustomerID = g.Key,
+            // OrderCount = g.Count()
+            // })
+            // .Take(5);
+
+            //foreach (var customer in topCustomers)
+            //{
+            //   Console.WriteLine(customer);
+            //} 
+            #endregion
 
             // Find all employees who have processed orders in more than 3 different countries.
 
