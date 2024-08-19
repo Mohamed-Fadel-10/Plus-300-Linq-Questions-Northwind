@@ -1,4 +1,5 @@
 ﻿using Northwind.Entities;
+using System.Net.NetworkInformation;
 using static Northwind.DataLists;
 namespace Northwind
 {
@@ -140,15 +141,104 @@ namespace Northwind
             //} 
             #endregion
 
-            // Retrieve the names and phone numbers of all suppliers.
+            //7- Retrieve the names and phone numbers of all suppliers.
+            #region 7- Retrieve the names and phone numbers of all suppliers.
 
-            // Get all orders placed in the year 1996.
+            // 1- Using Query Operator
+            //var query =
+            //    Suppliers.Select(S => new
+            //    {
+            //        Name=S.ContactName,
+            //        Phone=S.Phone
+            //    });
 
-            // Find all customers in the "USA".
+            //// 2- Using Query Expression
+            //var query =
+            //    from S in Suppliers
+            //    select new { Name = S.ContactName, Phone = S.Phone };
+            //foreach(var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //} 
+            #endregion
 
-            // List products that belong to category "Beverages".
+            //8- Get all orders placed in the year 1998.
+            #region 8- Get all orders placed in the year 1998.
 
-            // Retrieve orders with a freight cost less than $10.
+            //1 - Using Query Operator
+            //var query =
+            //    Orders.Where(O => O.OrderDate.Year == 1998);
+
+            //2- Using Query Expression
+            //var query =
+            //    from O in Orders
+            //    where O.OrderDate.Year == 1998
+            //    select O;
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //} 
+            #endregion
+
+            //9- Find all customers in the "USA".
+
+            #region 9- Find all customers in the "USA".
+            //1- Using Query Operator
+            //var query =
+            //    Customers.Where(C => C.Country == "USA");
+            //2- Using Query Expression
+            //var query =
+            //    from C in Customers
+            //    where C.Country == "USA"
+            //    select C;
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //} 
+            #endregion
+
+            //10- List products that belong to category "Beverages".
+            #region 10- List products that belong to category "Beverages".
+            // 1- Using Query Operator
+            //var query =
+            //    Products.Join(
+            //        Categories,
+            //        P => P.CategoryID,
+            //        C => C.CategoryID,
+            //        (P, C) => new { Product = P, Category = C })
+            //    .Where(C => C.Category.CategoryName.Contains("Beverages"))
+            //    .Select(P=>P.Product);
+            //2- Using Query Expression
+            //var query =
+            //    from P in Products
+            //    join C in Categories
+            //    on P.CategoryID equals C.CategoryID
+            //    where C.CategoryName.Contains("Beverages")
+            //    select P;
+
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //} 
+            #endregion
+
+            //11- Retrieve orders with a freight cost less than $20.
+            #region 11- Retrieve orders with a freight cost less than $20.
+            //1- Using Query Operator
+            //var query =
+            //    Orders.Where(O => O.Freight < 20);
+
+            //2- Using Query Expression
+
+            //var query =
+            //    from O in Orders
+            //    where O.Freight < 20
+            //    select O;
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine(item);
+            //} 
+            #endregion
 
             // Get the names and titles of all employees.
 
