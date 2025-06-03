@@ -240,9 +240,27 @@ namespace Northwind
             //} 
             #endregion
 
-            // Get the names and titles of all employees.
+            //12- Get the names and titles of all employees.
+            #region 12- Get the names and titles of all employees.
+            //var query = Employees.Select(e => new
+            //{
+            //    Name = e.FirstName + " " + e.LastName,
+            //    Title = e.Title,
+            //});
+            //foreach (var item in query) { 
+            //Console.WriteLine(item);
+            //}
 
-            // Find suppliers from "Germany".
+            //var query = from Emp in Employees
+            //            select new {
+            //                Name= Emp.FirstName, 
+            //                Title= Emp.LastName
+            //            };
+
+            // Find suppliers from "Germany". 
+            #endregion
+
+
 
             // List all products with quantities between 10 and 50.
 
@@ -457,17 +475,99 @@ namespace Northwind
             //} 
             #endregion
 
-            // Find all employees who have processed orders in more than 3 different countries.
+            //3-Find all employees who have processed orders in more than 3 different countries.
 
-            // Get the total number of orders shipped by each shipper.
+            //4- Get the total number of orders shipped by each shipper.
+            #region 4- Get the total number of orders shipped by each shipper.
+            ////var query=
+            ////    Employees.Join(Orders,
+            ////    e=>e.EmployeeID,
+            ////    o=>o.EmployeeID,
+            ////    (e,o)=>new {Employee=e,Order=o})
+            ////    .GroupBy(o=>o.Order.)
 
-            // List all products that have been ordered more than the average quantity ordered per product.
+            //// Get the total number of orders shipped by each shipper.
+            ////var query =
+            ////      Orders.Join(Shippers,
+            ////      o => o.ShipVia,
+            ////      s => s.ShipperID,
+            ////      (o, s) => new { Order = o, Shipper = s })
+            ////      .GroupBy(g => new { g.Shipper.ShipperID, g.Shipper.CompanyName })
+            ////      .Select(g => new
+            ////             {
+            ////                 Shipper = g.Key.CompanyName,
+            ////                 OrderCount = g.Count()
+            ////             });
 
+
+
+            //var query =
+            //     (
+            //        from O in Orders
+            //        join S in Shippers
+            //        on O.ShipVia equals S.ShipperID
+            //        group S by new { S.ShipperID, S.CompanyName } into g
+            //        select new
+            //        {
+            //            g.Key.CompanyName,
+            //            OrderCount = g.Count()
+            //        });
+
+            //foreach (var item in query)
+            //{
+            //    Console.WriteLine($"Shipper: {item.CompanyName}, Order Count: {item.OrderCount}");
+            //} 
+            #endregion
+
+            //5- List all products that have been ordered more than the average quantity ordered per product.
+            #region 5-List all products that have been ordered more than the average quantity ordered per product.
+            //var productQuantities = OrderDetails
+            // .GroupBy(od => od.ProductID)
+            // .Select(g => new
+            // {
+            //     ProductID = g.Key,
+            //     TotalQuantity = g.Sum(od => od.Quantity)
+            // })
+            // .ToList();
+
+            //var averageQuantity = productQuantities.Average(pq => pq.TotalQuantity);
+
+            //var result = productQuantities
+            //     .Where(pq => pq.TotalQuantity > averageQuantity)
+            //     .Join(Products,
+            //           pq => pq.ProductID,
+            //           p => p.ProductID,
+            //           (pq, p) => new
+            //           {
+            //               p.ProductID,
+            //               p.ProductName,
+            //               pq.TotalQuantity,
+            //               AverageQuantity = averageQuantity
+            //           })
+            //     .ToList();
+
+            //foreach (var product in result)
+            //{
+            //    Console.WriteLine(product);
+            //} 
+            #endregion
             // Retrieve the names of all customers who have ordered products from more than 5 different categories.
 
             // Find suppliers that have provided products in more than 3 different categories.
 
-            // Get the details of the order with the maximum freight cost.
+            // 8- Get the details of the order with the maximum freight cost.
+            #region 8-Get the details of the order with the maximum freight cost.
+            //var max = Orders.Max(o => o.Freight);
+            //var orderDetails = Orders.Where(o => o.Freight == max).Select(o=>new
+            //{
+            //    Freight = max,
+            //    Name=o.ShipName
+            //}).ToList();
+            //foreach (var order in orderDetails)
+            //{
+            //    Console.WriteLine(order.ToString());
+            //} 
+            #endregion
 
             // List all employees who have shipped orders to more than 10 different cities.
 
